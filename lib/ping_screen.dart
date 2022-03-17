@@ -89,44 +89,4 @@ class _PingScreenState extends State<PingScreen> {
     this.isPinged = BlocProvider.of<PingBloc>(context).isPinged;
     this.totalResponse = BlocProvider.of<PingBloc>(context).totalResponse;
   }
-
-  Widget buildUi(BuildContext context, PingStates state) {
-    return Center(
-      child: Column(
-        children: [
-          ElevatedButton(
-            child: Text('Ping'),
-            onPressed: () {
-              BlocProvider.of<PingBloc>(context).add(PingGoogleEvent());
-            },
-          ),
-          isPinged ? Text('IP:${data.response!.ip}') : Container(),
-          isPinged ? Text('Time:${data.response!.time}') : Container(),
-          hasEnded ? Text('Total Response Time: $totalResponse') : Container()
-        ],
-      ),
-    );
-  }
 }
-
-
-//  body: SafeArea(
-//         child: Center(
-//           child: Column(
-//             children: [
-//               ElevatedButton(
-//                 child: Text('Ping'),
-//                 onPressed: () {
-//                   BlocProvider.of<PingBloc>(context).add(PingGoogleEvent());
-//                 },
-//               ),
-//               isPinged ? Text('IP:${data.response!.ip}') : Container(),
-//               isPinged ? Text('Time:${data.response!.time}') : Container(),
-//               hasEnded
-//                   ? Text('Total Response Time: $totalResponse')
-//                   : Container()
-//             ],
-//           ),
-//         ),
-//       ),
-//     )
