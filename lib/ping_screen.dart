@@ -52,18 +52,19 @@ class _PingScreenState extends State<PingScreen> {
               children: [
                 ElevatedButton(
                   key: ValueKey('ping button'),
-                  child: Text('Ping'),
+                  child: Text('Ping Google'),
                   onPressed: () {
                     BlocProvider.of<PingBloc>(context).add(PingGoogleEvent());
                   },
                 ),
                 isPinged
                     ? Text(
-                        'IP:${data.response!.ip}',
+                        'ip',
+                        //'IP:${data.response!.ip}',
                         key: ValueKey('IP'),
                       )
                     : Container(),
-                isPinged ? Text('Time:${data.response!.time}') : Container(),
+                isPinged ? Text('Time:') : Container(),
                 hasEnded
                     ? Text('Total Response Time: $totalResponse')
                     : Container()
@@ -71,14 +72,7 @@ class _PingScreenState extends State<PingScreen> {
             ),
           );
         },
-        listener: (context, state) {
-          if (state is OnError) {
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text(state.message),
-              backgroundColor: Colors.red,
-            ));
-          }
-        },
+        listener: (context, state) {},
       ),
     );
   }

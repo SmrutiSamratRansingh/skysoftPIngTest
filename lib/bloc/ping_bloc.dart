@@ -19,16 +19,16 @@ class PingBloc extends Bloc<PingEvents, PingStates> {
     yield OnLoading();
     if (event is PingGoogleEvent) {
       // Create ping object with desired args
-      final ping = Ping(
-        'google.com',
-        count: 5,
-      );
+      final ping = Ping('google.com', count: 5);
 
       // Begin ping process and listen for output
       ping.stream.listen((event) {
         this.data = event;
-        isPinged = true;
-        // print(event.response!.time!);
+        this.isPinged = true;
+        if (event.response != null) {
+          print(event.response!.ip);
+          print(event.response!.time);
+        }
 
         if (event.response == null) {
           isPinged = false;
