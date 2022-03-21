@@ -59,12 +59,11 @@ class _PingScreenState extends State<PingScreen> {
                 ),
                 isPinged
                     ? Text(
-                        'ip',
-                        //'IP:${data.response!.ip}',
+                        'IP:${data.response!.ip}',
                         key: ValueKey('IP'),
                       )
                     : Container(),
-                isPinged ? Text('Time:') : Container(),
+                isPinged ? Text('Time:${data.response!.time}') : Container(),
                 hasEnded
                     ? Text('Total Response Time: $totalResponse')
                     : Container()
